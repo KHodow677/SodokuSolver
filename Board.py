@@ -4,8 +4,9 @@ import random
 
 
 class Board:
+
     def __init__(self, sequence = None):
-        self._ResetBoard()
+        self.ResetBoard()
 
         if sequence:
             self.sequence = sequence
@@ -17,10 +18,10 @@ class Board:
         else:
             self.sequence = None
 
-    def _ResetBoard(self):
+    def ResetBoard(self):
         self.board = [[0 for i in range(9)] for i in range(9)]
 
-    def boardToSequence(self, input_board = None):
+    def BoardToSequence(self, input_board = None):
         if input_board:
             sequence = ''.join([str(i) for j in input_board for i in j])
             return sequence
