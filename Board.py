@@ -98,33 +98,67 @@ class Board:
                 
                 self.board[row][col] = 0
 
-    def GenerateSolution(self, board):
+    def GenerateSolution(self):
         number_list = [1,2,3,4,5,6,7,8,9]
         for i in range(0,81):
             row=i//9
             col=i%9
             #find next empty cell
-            if board[row][col]==0:
+            if self.board[row][col]==0:
                 random.shuffle(number_list)      
                 for number in number_list:
                     pos = (row, col)
-                    if self.SquareIsValid(board, number, pos):
-                        self.board.board[row][col]=number
+                    if self.SquareIsValid(number, pos):
+                        self.board[row][col]=number
                         if not self.FindEmpty():
                             return True
                         else:
-                            if self.GenerateSolution(board):
+                            if self.GenerateSolution():
                                 #if the grid is full
                                 return True
                 break
-        board[row][col]=0  
+        self.board[row][col]=0  
         return False
     
     def RemoveNumbersFromBoard(self, difficulty):
         if difficulty == 0:
-            _squares_to_remove = 36
+            squares_to_remove = 36
         elif difficulty == 1:
-            _squares_to_remove = 46
+            squares_to_remove = 46
         elif difficulty == 2:
-            _squares_to_remove = 52
+            squares_to_remove = 52
         
+        counter = 0
+        while counter < 4:
+            rRow = random.randint(0, 2)
+            rCol = random.randint(0, 2)
+            if self.board[rRow][rCol] != 0:
+                self.board[rRow][rCol] = 0
+                counter += 1
+
+        counter = 0
+        while counter < 4:
+            rRow = random.randint(3, 5)
+            rCol = random.randint(3, 5)
+            if self.board[rRow][rCol] != 0:
+                self.board[rRow][rCol] = 0
+                counter += 1
+
+        counter = 0
+        while counter < 4:
+            rRow = random.randint(6, 8)
+            rCol = random.randint(6, 8)
+            if self.board[rRow][rCol] != 0:
+                self.board[rRow][rCol] = 0
+                counter += 1
+
+        squares_to_remove -= 12
+        counter = 0
+        while counter < squares_to_remove:
+            rRow = random.randint(0, 8)
+            rCol = random.randint(0, 8)
+
+            if self.board[rRow][rCol] != 0:
+                n = self.board[rRow][rCol]
+                self.board[rRow][rCol] = 0
+                counter += 1
