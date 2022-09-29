@@ -1,13 +1,12 @@
 import copy
 from msilib import sequence
 import random
-
-
+import pygame
+import time
 class Board:
-
-    def __init__(self, sequence = None):
+    def __init__(self, screen, sequence = None):
         self.ResetBoard()
-
+        self.screen = screen
         if sequence:
             self.sequence = sequence
 
@@ -79,8 +78,34 @@ class Board:
                     print(self.board[i][j])
                 else:
                     print(str(self.board[i][j]) + " ", end="")
+
+    def Draw(self):
+        # Load test fonts for future use
+        font1 = pygame.font.SysFont("comicsans", 40)
+        dif = 500 / 9
+        # Draw the lines
+        for i in range (9):
+            for j in range (9):
+                if self.board[i][j]!= 0:
+    
+                    # Fill blue color in already numbered grid
+                    pygame.draw.rect(self.screen, (204, 85, 0), (i * dif, j * dif, dif + 1, dif + 1))
+    
+                    # Fill grid with default numbers specified
+                    text1 = font1.render(str(self.board[i][j]), 1, (0, 0, 0))
+                    self.screen.blit(text1, (i * dif + 15, j * dif))
+        # Draw lines horizontally and vertically to form grid          
+        for i in range(10):
+            if i % 3 == 0 :
+                thick = 7
+            else:
+                thick = 1
+            pygame.draw.line(self.screen, (0, 0, 0), (0, i * dif), (500, i * dif), thick)
+            pygame.draw.line(self.screen, (0, 0, 0), (i * dif, 0), (i * dif, 500), thick) 
         
     def Solve(self):
+        self.Draw()
+        pygame.display.update()
         empty = self.FindEmpty()
         # Check if board is completed, and if so return
         if not empty:
@@ -93,7 +118,7 @@ class Board:
             if self.SquareIsValid(num, (row, col)):
                 self.board[row][col] = num
 
-                if self.Solve():
+                if self.Solve(): 
                     return True
                 
                 self.board[row][col] = 0
