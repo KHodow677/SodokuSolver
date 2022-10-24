@@ -48,7 +48,7 @@ def DrawBox():
 # Raise error when wrong value entered
 def RaiseError1():
     text1 = font1.render("WRONG !!!", 1, (0, 0, 0))
-    screen.blit(text1, (20, 570)) 
+    screen.blit(text1, (20, 620)) 
 def RaiseError2():
     text1 = font1.render("Wrong !!! Not a valid Key", 1, (0, 0, 0))
     screen.blit(text1, (20, 570)) 
@@ -75,7 +75,6 @@ board.GenerateSolution()
 board.RemoveNumbersFromBoard(2)
 # The loop thats keep the window running
 while run:
-     
     # White color background
     screen.fill((255, 255, 255))
     # Loop through the events stored in event.get()

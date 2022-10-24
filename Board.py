@@ -2,7 +2,6 @@ import copy
 from msilib import sequence
 import random
 import pygame
-import time
 class Board:
     def __init__(self, screen, sequence = None):
         self.ResetBoard()
@@ -105,7 +104,6 @@ class Board:
         
     def Solve(self):
         self.Draw()
-        pygame.display.update()
         empty = self.FindEmpty()
         # Check if board is completed, and if so return
         if not empty:
