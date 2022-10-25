@@ -5,9 +5,20 @@ Python Program that includes sodoku board generation, gameplay, and backtracking
 Python 3, Pygame
 
 # How to Run
-Run the file IdeaGen.py and click "Generate" to get your game idea
+Run the file Sodoku.exe 
+Or run Sodoku.py (if python 3 and pygame installed)
 
+Press R to clear the board
+Press D to create new problem
+Click square and enter correct number to fill it
+Press ENTER to solve board algorithmically
+
+# ScreenShots
+Unsolved Board:
 ![alt text](https://github.com/KHodow677/SodokuSolver/blob/main/Assets/Screenshots/SodokuEmpty.PNG?raw=true)
+
+Solved Board:
+![alt text](https://github.com/KHodow677/SodokuSolver/blob/main/Assets/Screenshots/SodokuFull.PNG?raw=true)
 
 # License Info
 This is free and unencumbered software released into the public domain.
