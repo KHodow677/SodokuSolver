@@ -7,7 +7,7 @@ Python 3, Pygame
 # How to Run
 Run the file IdeaGen.py and click "Generate" to get your game idea
 
-![alt text](https://github.com/KHodow677/IdeaGenerator/blob/main/Assets/Screenshots/IdeaGenerator.PNG?raw=true)
+![alt text](https://github.com/KHodow677/SodokuSolver/blob/main/Assets/Screenshots/SodokuEmpty.PNG?raw=true)
 
 # License Info
 This is free and unencumbered software released into the public domain.
