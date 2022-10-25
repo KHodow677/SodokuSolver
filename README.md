@@ -14,10 +14,10 @@ Click square and enter correct number to fill it
 Press ENTER to solve board algorithmically
 
 # ScreenShots
-Unsolved Board:
+Unsolved Board: \n
 ![alt text](https://github.com/KHodow677/SodokuSolver/blob/main/Assets/Screenshots/SodokuEmpty.PNG?raw=true)
 
-Solved Board:
+Solved Board: \n
 ![alt text](https://github.com/KHodow677/SodokuSolver/blob/main/Assets/Screenshots/SodokuFull.PNG?raw=true)
 
 # License Info
