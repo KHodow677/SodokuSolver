@@ -1,5 +1,3 @@
-import copy
-from msilib import sequence
 import random
 import pygame
 class Board:

@@ -1,5 +1,6 @@
 import Board
-import pygame, time
+import pygame
+
 pygame.font.init()
 
 pygame.display.set_caption("Backtracking Sudoku Solver")
