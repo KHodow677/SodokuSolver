@@ -2,29 +2,9 @@ import Board
 import pygame, time
 pygame.font.init()
 
-def redraw_window(win, board, time, strikes):
-    screen.fill((255,255,255))
-    # Draw time
-    fnt = pygame.font.SysFont("comicsans", 40)
-    text = fnt.render("Time: " + format_time(time), 1, (0,0,0))
-    win.blit(text, (540 - 160, 560))
-    # Draw Strikes
-    text = fnt.render("X " * strikes, 1, (255, 0, 0))
-    win.blit(text, (20, 560))
-    # Draw grid and board
-    board.draw(win)
-
-
-def format_time(secs):
-    sec = secs%60
-    minute = secs//60
-    hour = minute//60
-
-    mat = " " + str(minute) + ":" + str(sec)
-    return mat
-
 pygame.display.set_caption("Backtracking Sudoku Solver")
- 
+
+# Establish variables for board setup and partitioning
 x = 0
 y = 0
 dif = 500 / 9
@@ -32,30 +12,37 @@ val = 0
 # Load test fonts for future use
 font1 = pygame.font.SysFont("comicsans", 40)
 font2 = pygame.font.SysFont("comicsans", 20)
-def GetCoord(pos):
+
+# Function that gets sets the x-y coordinates based on the coordinates of passed position
+# Inputs: tuple pos representing x-y coordinates
+def SetCoord(pos):
     global x
     x = pos[0]//dif
     global y
     y = pos[1]//dif
-# Fill value entered in cell     
+
+# Function that fills value entered in cell the cell  
+# Inputs: int val representign of the number entered in the cell  
 def DrawVal(val):
     text1 = font1.render(str(val), 1, (0, 0, 0))
     screen.blit(text1, (x * dif + 15, y* dif))  
+
+# Function that draws the selection box
 def DrawBox():
     for i in range(2):
         pygame.draw.line(screen, (255, 0, 0), (x * dif-3, (y + i)*dif), (x * dif + dif + 3, (y + i)*dif), 7)
         pygame.draw.line(screen, (255, 0, 0), ( (x + i)* dif, y * dif ), ((x + i) * dif, y * dif + dif), 7)  
-# Raise error when wrong value entered
+
+# Function that raises error when wrong value entered
 def RaiseError1():
     text1 = font1.render("WRONG !!!", 1, (0, 0, 0))
-    screen.blit(text1, (20, 620)) 
-def RaiseError2():
-    text1 = font1.render("Wrong !!! Not a valid Key", 1, (0, 0, 0))
-    screen.blit(text1, (20, 570)) 
+    screen.blit(text1, (20, 620))  
+
 # Display options when solved
 def result():
     text1 = font2.render("FINISHED PRESS R or D", 1, (0, 0, 0))
     screen.blit(text1, (20, 570))   
+
 # Display instruction for the game
 def Instruction():
     text1 = font2.render("PRESS D TO RESET TO DEFAULT / R TO EMPTY", 1, (0, 0, 0))
@@ -63,6 +50,7 @@ def Instruction():
     screen.blit(text1, (20, 520))       
     screen.blit(text2, (20, 540))
 
+# Sets up variables for main game loop logic
 screen = pygame.display.set_mode((500,700))
 run = True
 flag1 = 0
@@ -70,6 +58,7 @@ flag2 = 0
 rs = 0
 error = 0
 
+# Set up the board for the game
 board = Board.Board(screen)
 board.GenerateSolution()
 board.RemoveNumbersFromBoard(2)
@@ -86,7 +75,7 @@ while run:
         if event.type == pygame.MOUSEBUTTONDOWN:
             flag1 = 1
             pos = pygame.mouse.get_pos()
-            GetCoord(pos)
+            SetCoord(pos)
         # Get the number to be inserted if key pressed   
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
@@ -161,8 +150,6 @@ while run:
        
     if error == 1:
         RaiseError1() 
-    elif error == 2:
-        RaiseError2()
     if rs == 1:
         result()       
     board.Draw()
