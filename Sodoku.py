@@ -1,4 +1,4 @@
-import Board
+import Assets.Board as Board
 import pygame
 
 pygame.font.init()
