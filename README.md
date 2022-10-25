@@ -1,4 +1,4 @@
-# SodokuSolverBackTracking
+# SodokuSolver
 Python Program that includes sodoku board generation, gameplay, and backtracking solver.
 
 # Dependencies
